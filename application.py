@@ -2126,11 +2126,10 @@ def handle_message(data):
             
             # RAG応答生成
             if chatbot:
-                # 🆕 静的Q&Aがあればそれを使用、なければRAG
+                # 🆕 静的Q&Aがあればそれを使用、なければRAG（CERA版互換）
                 if static_response:
-                    response = static_response['text']
-                    emotion = static_response.get('emotion', 'neutral')
-                    print(f"✅ 静的Q&A使用: emotion={emotion}")
+                    response = static_response  # 文字列として使用
+                    print(f"✅ 静的Q&A使用")
                 else:
                     # RAG応答生成
                     response = chatbot.get_response(
@@ -2138,8 +2137,9 @@ def handle_message(data):
                         language=language,
                         conversation_history=conversation_history
                     )
-                    # 応答から感情タグを抽出（RAG応答の場合のみ）
-                    response, emotion = extract_emotion_tag(response)
+                
+                # 応答から感情タグを抽出（CERA版と同じく全ケースで実行）
+                response, emotion = extract_emotion_tag(response)
                 
                 # 感情を検証
                 emotion = validate_emotion(emotion)

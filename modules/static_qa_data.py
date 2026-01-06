@@ -403,7 +403,8 @@ def get_response_for_user(message=None, user_type='default', current_phase='phas
         phase: Phaseキー（CERA版互換用）
     
     Returns:
-        dict or None: {'text': str, 'emotion': str} 形式の辞書、見つからない場合はNone
+        str or None: 応答テキスト（CERA版と同じく文字列を返す）
+                     感情タグは[EMOTION:xxx]形式で含まれている
     """
     # CERA版互換: queryパラメータをサポート
     if query is not None:
@@ -439,8 +440,8 @@ def get_response_for_user(message=None, user_type='default', current_phase='phas
             # キーも同様に正規化（疑問符を削除）
             normalized_key = key.lower().replace(' ', '').replace('　', '').replace('？', '').replace('?', '')
             if normalized_key in normalized_message or normalized_message in normalized_key:
-                # parse_response()を使って辞書形式に変換
-                return parse_response(response)
+                # CERA版互換: 文字列を直接返す（感情タグは[EMOTION:xxx]形式で含まれる）
+                return response
     
     # 全Phase横断検索
     for phase_name, qa_dict in qa_data.items():
@@ -448,8 +449,8 @@ def get_response_for_user(message=None, user_type='default', current_phase='phas
             # キーも同様に正規化（疑問符を削除）
             normalized_key = key.lower().replace(' ', '').replace('　', '').replace('？', '').replace('?', '')
             if normalized_key in normalized_message or normalized_message in normalized_key:
-                # parse_response()を使って辞書形式に変換
-                return parse_response(response)
+                # CERA版互換: 文字列を直接返す（感情タグは[EMOTION:xxx]形式で含まれる）
+                return response
     
     return None
 
