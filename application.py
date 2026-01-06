@@ -923,7 +923,7 @@ def generate_audio_by_language(text, language='ja', emotion_params='neutral'):
                 audio_content = elevenlabs_client.generate_voice(
                     text, 
                     emotion=emotion_params,
-                    speed=1.0,
+                    speed=1.2,  # スピードを1.0→1.2に変更
                     language=language
                 )
                 
@@ -941,7 +941,7 @@ def generate_audio_by_language(text, language='ja', emotion_params='neutral'):
                     audio_content = azure_speech_client.generate_voice(
                         text, 
                         emotion=emotion_params,
-                        speed=1.0
+                        speed=1.2  # スピードを1.0→1.2に変更
                     )
                     
                     # WAVファイルとして一時保存
@@ -965,7 +965,7 @@ def generate_audio_by_language(text, language='ja', emotion_params='neutral'):
             audio_content = azure_speech_client.generate_voice(
                 text, 
                 emotion=emotion_params,
-                speed=1.0
+                speed=1.2  # スピードを1.0→1.2に変更
             )
             
             # WAVファイルとして一時保存

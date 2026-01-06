@@ -14,7 +14,7 @@ qa_media_data = {
     "金彩って何": {
         "images": [
             {
-                "url": "/static/media/kyoyuzen/MiyazakiYuzensai.jpg",
+                "url": "/static/media/kyoyuzen/suggestion1.png",
                 "caption": "金彩が施された京友禅の着物じゃよ",
                 "alt": "京友禅の美しい着物"
             }
@@ -24,24 +24,14 @@ qa_media_data = {
     "道具は何を使うの": {
         "images": [
             {
-                "url": "/static/media/kyoyuzen/他の染色技法との違いは.jpg",
+                "url": "/static/media/kyoyuzen/suggestion2.jpg",
                 "caption": "金彩で使う様々な道具じゃ",
                 "alt": "金彩の道具"
             }
         ]
     },
     
-    "どうやって金を振りかけるの": {
-        "videos": [
-            {
-                "url": "/static/media/kyoyuzen/craftsmanship.mp4",
-                "thumbnail": "/static/media/thumbnails/craftsmanship_thumb.jpg",
-                "caption": "金彩職人の技を見てみるんじゃ！",
-                "alt": "金彩の作業動画"
-            }
-        ]
-    },
-    
+
     "金をどうやって貼るの": {
         "images": [
             {
@@ -52,40 +42,13 @@ qa_media_data = {
         ]
     },
     
-    "変わった模様の作り方ある": {
-        "images": [
-            {
-                "url": "/static/media/kyoyuzen/他の染色技法との違いは.jpg",
-                "caption": "蜘蛛の巣模様など変わった技法があるんじゃよ",
-                "alt": "様々な金彩の模様"
-            }
-        ],
-        "videos": [
-            {
-                "url": "/static/media/kyoyuzen/craftsmanship.mp4",
-                "thumbnail": "/static/media/thumbnails/craftsmanship_thumb.jpg",
-                "caption": "実際の作業を見てみるんじゃ！",
-                "alt": "金彩作業の動画"
-            }
-        ]
-    },
-    
-    "職人として一番苦労したことは": {
-        "videos": [
-            {
-                "url": "/static/media/kyoyuzen/craftsmanship.mp4",
-                "thumbnail": "/static/media/thumbnails/craftsmanship_thumb.jpg",
-                "caption": "こういう細かい作業、本当に難しいんじゃよ...",
-                "alt": "金彩の細かい作業"
-            }
-        ]
-    },
+
     
     # 英語版
     "What is Kinsai": {
         "images": [
             {
-                "url": "/static/media/kyoyuzen/MiyazakiYuzensai.jpg",
+                "url": "/static/media/kyoyuzen/suggestion1.png",
                 "caption": "Kimono with Kinsai gold decoration!",
                 "alt": "Beautiful Kyo-Yuzen kimono"
             }
@@ -95,7 +58,7 @@ qa_media_data = {
     "What tools do you use": {
         "images": [
             {
-                "url": "/static/media/kyoyuzen/他の染色技法との違いは.jpg",
+                "url": "/static/media/kyoyuzen/suggestion2.jpg",
                 "caption": "Various tools used in Kinsai",
                 "alt": "Kinsai tools"
             }
@@ -162,7 +125,7 @@ qa_responses = {
                 
                 例えばな、友禅染めで綺麗な花を描いたとするじゃろ？でもそれだけじゃちょっと寂しい感じなんじゃ。そこに金をちょいっと貼るとな、パーッと華やかになるんじゃよ！まるでお化粧するみたいじゃから「化粧係」って呼ばれとるんじゃ。ハハハ。
                 
-                明治時代から始まった仕事でな、今では京友禅には欠かせん工程になっとるんじゃぞい。
+        
                 [EMOTION:happy]
             """,
             
@@ -181,7 +144,7 @@ qa_responses = {
             "どうやって金を振りかけるの": """
                 これがまた楽しいんじゃよ！
                 
-                まずな、着物に糊をペタペタ塗るんじゃ。そこに砂子筒を持って、トントントンって叩くとな、金網の穴から金がキラキラ〜って落ちていくんじゃよ。まるで金色の雪を降らせとるみたいでな、何年やっても飽きんのう。
+                まずな、着物に糊をペタペタ塗るんじゃ。そこに砂子筒を持って、たたき筆で金網をトントントンって叩くとな、金網の穴から金がキラキラ〜って落ちていくんじゃよ。まるで金色の雪を降らせとるみたいでな、何年やっても飽きんのう。
                 
                 面白いのが、金網の穴の大きさでな。大きい穴から振ると大粒の金、小さい穴だと細か〜い金が出るんじゃ。料理の塩と同じじゃな。粗塩と細かい塩みたいなもんじゃぞい。
                 [EMOTION:happy]
@@ -264,7 +227,7 @@ qa_responses = {
             "How do you sprinkle gold": """
                 This part is so fun!
                 
-                First, I put glue on the fabric. Then I take my tube and tap-tap-tap it, and the gold falls through the mesh like glittering rain! It's like making golden snow. Never gets old, no matter how many years I do it!
+                First, I put glue on the fabric. Then I hold the sunago-zutsu tube and tap-tap-tap the mesh with my tataki brush, and the gold falls through like glittering rain! It's like making golden snow. Never gets old, no matter how many years I do it!
                 
                 The cool thing is, different mesh sizes make different gold sizes. Big holes make chunky gold, small holes make fine gold. Just like coarse salt and fine salt in cooking!
                 [EMOTION:happy]
@@ -395,7 +358,7 @@ def get_suggestions_by_user_type(user_type='business'):
 
 def get_current_phase(selected_count):
     """
-    選択されたサジェスチョン数から現在のPhaseを判定
+    選択されたサジェスチョン数から現在のPhaseを判定（CERA版準拠）
     
     Args:
         selected_count: 選択されたサジェスチョン数
@@ -403,38 +366,52 @@ def get_current_phase(selected_count):
     Returns:
         str: 現在のPhase ('phase1_overview', 'phase2_technical', 'phase3_personal')
     """
-    # Phase1: 2個、Phase2: 4個、Phase3: 2個
-    if selected_count < 2:
+    # Phase1: 3個、Phase2: 3個、Phase3: それ以降
+    if selected_count < 3:  # 0, 1, 2 → Phase1
         return 'phase1_overview'
-    elif selected_count < 6:
+    elif selected_count < 6:  # 3, 4, 5 → Phase2
         return 'phase2_technical'
-    else:
+    else:  # 6以上 → Phase3
         return 'phase3_personal'
 
 def get_suggestions_for_phase(phase, selected_suggestions=None, user_type='default', language='ja'):
     """
-    Phaseに応じたサジェスチョンを取得（MORI用 + CERA版互換）
+    Phaseに応じたサジェスチョンを取得（CERA版完全互換）
     
     Args:
         phase: 現在のPhase
         selected_suggestions: 既に選択されたサジェスチョンのリスト（デフォルト: []）
-        user_type: ユーザータイプ（MORI用では使用しない）
-        language: 言語 ('ja' or 'en')
+        user_type: ユーザータイプ（CERA版: 'business'/'student', MORI版: 'default'）
+        language: 言語 ('ja' or 'en', MORI版で使用）
     
     Returns:
-        list: サジェスチョンのリスト
+        list: サジェスチョンのリスト（最大3個、CERA版準拠）
     """
+    import random
+    
     # selected_suggestionsがNoneの場合は空リストに
     if selected_suggestions is None:
         selected_suggestions = []
-    # 言語に応じたサジェスチョンを取得
-    lang_suggestions = suggestions.get(language, suggestions['ja'])
-    phase_suggestions = lang_suggestions.get(phase, [])
     
-    # 既に選択されたものを除外
-    available_suggestions = [s for s in phase_suggestions if s not in selected_suggestions]
+    # CERA版: ユーザータイプ別サジェスチョン
+    if user_type in ['business', 'student']:
+        suggestions_data = get_suggestions_by_user_type(user_type)
+        phase_suggestions = suggestions_data.get(phase, [])
+    else:
+        # MORI版: 言語別サジェスチョン
+        lang_suggestions = suggestions.get(language, suggestions['ja'])
+        phase_suggestions = lang_suggestions.get(phase, [])
     
-    return available_suggestions
+    # 重複を排除（CERA版互換: 小文字化＋strip）
+    selected_lower = {s.lower().strip() for s in selected_suggestions}
+    available = [s for s in phase_suggestions if s.lower().strip() not in selected_lower]
+    
+    # 3個以下の場合はそのまま返す
+    if len(available) <= 3:
+        return available
+    
+    # ランダムに3個選択（CERA版互換）
+    return random.sample(available, 3)
 
 def get_suggestions_for_stage(stage, selected_suggestions=None, language='ja'):
     """
@@ -454,18 +431,18 @@ def get_suggestions_for_stage(stage, selected_suggestions=None, language='ja'):
 
 def get_response_for_user(message=None, user_type='default', current_phase='phase1_overview', language='ja', query=None, phase=None):
     """
-    ユーザーのメッセージに対する応答を取得（MORI用 + CERA版互換）
+    ユーザーのメッセージに対する応答を取得（MORI用 + CERA版完全互換）
     
     Args:
         message: ユーザーのメッセージ（MORI版）
-        user_type: ユーザータイプ（MORI用では使用しない）
+        user_type: ユーザータイプ（CERA版では'business'/'student'、MORI版では'default'）
         current_phase: 現在のPhase（MORI版）
         language: 言語 ('ja' or 'en')
         query: ユーザーの質問（CERA版互換用）
         phase: Phaseキー（CERA版互換用）
     
     Returns:
-        dict or None: 応答データ（見つかった場合）
+        str or None: 回答テキスト（CERA版互換のため文字列を返す）
     """
     # CERA版互換: queryパラメータをサポート
     if query is not None:
@@ -478,27 +455,36 @@ def get_response_for_user(message=None, user_type='default', current_phase='phas
     # メッセージがない場合はNoneを返す
     if not message:
         return None
+    
     # 正規化（小文字化、空白削除）
     normalized_message = message.lower().replace(' ', '').replace('　', '').replace('？', '').replace('?', '')
     
-    # 言語に応じたQ&Aデータを取得
-    lang_qa = qa_responses.get(language, qa_responses['ja'])
+    # MORI版: 言語別のQ&Aデータ
+    # CERA版: ユーザータイプ別のQ&Aデータ
+    if user_type in ['business', 'student']:
+        # CERA版との互換性: ユーザータイプ別Q&A（日本語版のみ対応）
+        qa_data = get_qa_by_user_type(user_type)
+    else:
+        # MORI版: 言語別Q&A
+        lang_qa = qa_responses.get(language, qa_responses['ja'])
+        qa_data = lang_qa
     
     # 現在のPhaseのQ&Aデータを取得
-    phase_qa = lang_qa.get(current_phase, {})
+    phase_qa = qa_data.get(current_phase, {}) if current_phase else {}
     
-    # 完全一致チェック
-    for key, response in phase_qa.items():
-        normalized_key = key.lower().replace(' ', '').replace('　', '')
-        if normalized_key in normalized_message or normalized_message in normalized_key:
-            return parse_response(response)
+    # 指定Phase内で検索
+    if phase_qa:
+        for key, response in phase_qa.items():
+            normalized_key = key.lower().replace(' ', '').replace('　', '')
+            if normalized_key in normalized_message or normalized_message in normalized_key:
+                return response  # CERA版互換: 文字列を直接返す
     
     # 全Phase横断検索
-    for phase_name, qa_dict in lang_qa.items():
+    for phase_name, qa_dict in qa_data.items():
         for key, response in qa_dict.items():
             normalized_key = key.lower().replace(' ', '').replace('　', '')
             if normalized_key in normalized_message or normalized_message in normalized_key:
-                return parse_response(response)
+                return response  # CERA版互換: 文字列を直接返す
     
     return None
 

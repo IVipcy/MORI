@@ -10,7 +10,7 @@ class OpenAITTSClient:
         
         # かわいい女性の声を固定で使用
         self.voice = "nova"  # 明るく元気な女性の声
-        self.speed = 1.15   # 少し速めで若々しい印象
+        self.speed = 1.3   # 速めで快活な印象（1.15→1.3に変更）
     
     def normalize_text_for_speech(self, text):
         """音声生成用テキスト正規化
