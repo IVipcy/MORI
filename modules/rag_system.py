@@ -1209,6 +1209,9 @@ Examples:
             
             answer = response.choices[0].message.content
             
+            # 🔧 最終的なテキストクリーンアップ（音声生成前の保険）
+            answer = self._final_text_cleanup(answer)
+            
             # ✅ 【追加】後処理:不完全な文章のチェックと修正
             if language == 'ja':
                 # 日本語の場合、句点で終わっているか確認
@@ -1260,6 +1263,43 @@ Examples:
                 return "Sorry, I'm having trouble generating a response right now."
             else:
                 return "申し訳ありません。応答の生成中にエラーが発生しました。"
+    
+    def _final_text_cleanup(self, text):
+        """最終的なテキストクリーンアップ（音声生成前の保険）
+        
+        AIの応答に混入した英語ノイズや制御文字を削除
+        
+        Args:
+            text: 元のテキスト
+        
+        Returns:
+            str: クリーンアップされたテキスト
+        """
+        import re
+        
+        if not text:
+            return ""
+        
+        cleaned_text = text
+        
+        # 1. 念のため、残っているタグを削除
+        cleaned_text = re.sub(r'\[.*?\]', '', cleaned_text)
+        
+        # 2. 制御文字を削除
+        cleaned_text = re.sub(r'[\x00-\x1f\x7f-\x9f]', '', cleaned_text)
+        
+        # 3. 句読点の直後の英単語を削除（ノイズ対策）★重要★
+        # 例: "です。not existent" → "です。"
+        # 複数の英単語にも対応
+        cleaned_text = re.sub(r'([、。])\s*[a-zA-Z\s]+(?=[、。]|\s*$)', r'\1', cleaned_text)
+        
+        # 4. 連続する空白を整理
+        cleaned_text = re.sub(r'\s+', ' ', cleaned_text)
+        
+        # 5. 前後の空白を削除
+        cleaned_text = cleaned_text.strip()
+        
+        return cleaned_text
     
     def get_knowledge_context(self, query):
         """質問に関連する専門知識を取得"""

@@ -433,6 +433,53 @@ class AzureSpeechClient:
             print(f"Azure Speech接続エラー: {e}")
             return False
     
+    def _normalize_text_for_azure(self, text):
+        """Azure Speech用テキスト正規化
+        
+        句読点後の英語ノイズや制御文字、タグを削除
+        
+        Args:
+            text: 元のテキスト
+        
+        Returns:
+            str: 正規化されたテキスト
+        """
+        import re
+        
+        if not text:
+            return ""
+        
+        normalized_text = text
+        
+        # 1. [EMOTION:xxx]などのタグを完全に削除
+        normalized_text = re.sub(r'\[.*?\]', '', normalized_text)
+        
+        # 2. 制御文字を削除
+        normalized_text = re.sub(r'[\x00-\x1f\x7f-\x9f]', '', normalized_text)
+        
+        # 3. 句読点の前後の空白を削除
+        normalized_text = re.sub(r'\s*([、。！？])\s*', r'\1', normalized_text)
+        
+        # 4. 句読点の直後に英単語がある場合は削除（ノイズ対策）
+        # 例: "です。not existent" → "です。"
+        # 複数の英単語にも対応
+        normalized_text = re.sub(r'([、。])\s*[a-zA-Z\s]+(?=[、。]|\s*$)', r'\1', normalized_text)
+        
+        # 5. 記号の正規化
+        normalized_text = normalized_text.replace('...', '。')
+        normalized_text = normalized_text.replace('…', '。')
+        
+        # 6. 連続する句読点を整理
+        normalized_text = re.sub(r'[、。]{2,}', '。', normalized_text)
+        
+        # 7. 連続する空白を整理
+        normalized_text = re.sub(r'\s+', ' ', normalized_text)
+        
+        # 8. 前後の空白を削除
+        normalized_text = normalized_text.strip()
+        
+        return normalized_text
+    
     def generate_voice(self, text, voice_name=None, emotion='neutral', speed=1.0):
         """音声生成（REST API使用）
         
@@ -444,6 +491,15 @@ class AzureSpeechClient:
         """
         if not self.speech_key or not self.speech_region:
             raise ValueError("Azure Speech APIの認証情報が設定されていません")
+        
+        # テキストを正規化（英語ノイズ除去）
+        normalized_text = self._normalize_text_for_azure(text)
+        
+        # デバッグ用：正規化前後のテキストを表示
+        if text != normalized_text:
+            print(f"📝 [Azure Speech] テキスト正規化:")
+            print(f"   元: {text[:80]}{'...' if len(text) > 80 else ''}")
+            print(f"   後: {normalized_text[:80]}{'...' if len(normalized_text) > 80 else ''}")
         
         # 音声名の決定
         voice = voice_name or self.voice_name
@@ -481,7 +537,7 @@ class AzureSpeechClient:
             <voice name="{voice}">
                 <mstts:express-as style="{style}" styledegree="{style_degree}">
                     <prosody rate="{speech_rate}" pitch="+5%">
-                        {text}
+                        {normalized_text}
                     </prosody>
                 </mstts:express-as>
             </voice>
@@ -535,8 +591,10 @@ class ElevenLabsClient:
     def normalize_japanese_text(self, text):
         """日本語テキストを音声合成向けに正規化
         
-        1. 京友禅用語辞書を適用（漢字→ひらがな）
-        2. 記号の正規化
+        1. 不要なタグや制御文字を削除
+        2. 京友禅用語辞書を適用（漢字→ひらがな）
+        3. 記号の正規化
+        4. 英語のノイズを除去
         
         Args:
             text: 元のテキスト
@@ -548,6 +606,15 @@ class ElevenLabsClient:
         
         normalized_text = text
         
+        # 🔧 [EMOTION:xxx]などのタグを完全に削除（念のため再確認）
+        normalized_text = re.sub(r'\[.*?\]', '', normalized_text)
+        
+        # 🔧 制御文字や余計な空白を削除
+        normalized_text = re.sub(r'[\x00-\x1f\x7f-\x9f]', '', normalized_text)
+        
+        # 🔧 句読点の前後の空白を削除
+        normalized_text = re.sub(r'\s*([、。！？])\s*', r'\1', normalized_text)
+        
         # 🐶 京友禅用語辞書を適用（漢字→ひらがな置換）
         normalized_text = apply_kyoyuzen_terms(normalized_text)
         
@@ -557,6 +624,17 @@ class ElevenLabsClient:
         
         # 連続する句読点を整理
         normalized_text = re.sub(r'[、。]{2,}', '。', normalized_text)
+        
+        # 🔧 句読点の直後に英単語がある場合は削除（ノイズ対策）
+        # 例: "です。not existent" → "です。"
+        # 複数の英単語にも対応
+        normalized_text = re.sub(r'([、。])\s*[a-zA-Z\s]+(?=[、。]|\s*$)', r'\1', normalized_text)
+        
+        # 🔧 連続する空白を単一スペースに
+        normalized_text = re.sub(r'\s+', ' ', normalized_text)
+        
+        # 前後の空白を削除
+        normalized_text = normalized_text.strip()
         
         return normalized_text
         
@@ -605,9 +683,14 @@ class ElevenLabsClient:
         # 🆕 日本語テキストを正規化（ElevenLabs UIの自動正規化を再現）
         normalized_text = self.normalize_japanese_text(text)
         
-        # デバッグ用：送信するテキストを常に表示
-        print(f"🎤 ElevenLabsに送信するテキスト:")
-        print(f"   {normalized_text[:100]}{'...' if len(normalized_text) > 100 else ''}")
+        # デバッグ用：正規化前後のテキストを表示
+        if text != normalized_text:
+            print(f"📝 テキスト正規化:")
+            print(f"   元: {text[:80]}{'...' if len(text) > 80 else ''}")
+            print(f"   後: {normalized_text[:80]}{'...' if len(normalized_text) > 80 else ''}")
+        else:
+            print(f"🎤 ElevenLabsに送信するテキスト:")
+            print(f"   {normalized_text[:100]}{'...' if len(normalized_text) > 100 else ''}")
         
         data = {
             'text': normalized_text,
@@ -1093,14 +1176,35 @@ def extract_emotion_tag(response_text):
         emotion = match.group(1).lower()
         
         # タグを削除した応答を作成
-        clean_response = re.sub(r'\[EMOTION:\w+\]', '', response_text).strip()
+        clean_response = re.sub(r'\[EMOTION:\w+\]', '', response_text)
+        
+        # 🔧 追加：すべての[]タグを削除（念のため）
+        clean_response = re.sub(r'\[.*?\]', '', clean_response)
+        
+        # 🔧 追加：制御文字を削除
+        clean_response = re.sub(r'[\x00-\x1f\x7f-\x9f]', '', clean_response)
+        
+        # 🔧 追加：句読点の後の英単語を削除（複数の英単語にも対応）
+        clean_response = re.sub(r'([、。])\s*[a-zA-Z\s]+(?=[、。]|\s*$)', r'\1', clean_response)
+        
+        # 🔧 追加：連続する空白を整理
+        clean_response = re.sub(r'\s+', ' ', clean_response)
+        
+        # 前後の空白を削除
+        clean_response = clean_response.strip()
         
         print(f"✅ 感情タグ検出: {emotion}")
         return clean_response, emotion
     
-    # タグが見つからない場合はneutral
+    # タグが見つからない場合も同様にクリーンアップ
+    clean_response = re.sub(r'\[.*?\]', '', response_text)
+    clean_response = re.sub(r'[\x00-\x1f\x7f-\x9f]', '', clean_response)
+    clean_response = re.sub(r'([、。])\s*[a-zA-Z\s]+(?=[、。]|\s*$)', r'\1', clean_response)
+    clean_response = re.sub(r'\s+', ' ', clean_response)
+    clean_response = clean_response.strip()
+    
     print(f"⚠️ 感情タグなし → neutral")
-    return response_text, 'neutral'
+    return clean_response, 'neutral'
 
 # ====== 【追加箇所4】感情検証ヘルパー関数 ======
 def validate_emotion(emotion):

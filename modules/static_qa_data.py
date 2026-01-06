@@ -2,7 +2,156 @@
 
 # ==========================================
 # 金彩職人MORI向けQ&Aデータ（言語別）
-# ========================================== 
+# ==========================================
+
+# ====================================================================
+# 🎯 メディアデータ（画像・動画・リンク）- CERA版に準拠
+# ====================================================================
+# 注意: 疑問符（？）はget_qa_media関数で自動正規化されるため不要
+
+qa_media_data = {
+    # 日本語版
+    "金彩って何": {
+        "images": [
+            {
+                "url": "/static/media/kyoyuzen/MiyazakiYuzensai.jpg",
+                "caption": "金彩が施された京友禅の着物じゃよ",
+                "alt": "京友禅の美しい着物"
+            }
+        ]
+    },
+    
+    "道具は何を使うの": {
+        "images": [
+            {
+                "url": "/static/media/kyoyuzen/他の染色技法との違いは.jpg",
+                "caption": "金彩で使う様々な道具じゃ",
+                "alt": "金彩の道具"
+            }
+        ]
+    },
+    
+    "どうやって金を振りかけるの": {
+        "videos": [
+            {
+                "url": "/static/media/kyoyuzen/craftsmanship.mp4",
+                "thumbnail": "/static/media/thumbnails/craftsmanship_thumb.jpg",
+                "caption": "金彩職人の技を見てみるんじゃ！",
+                "alt": "金彩の作業動画"
+            }
+        ]
+    },
+    
+    "金をどうやって貼るの": {
+        "images": [
+            {
+                "url": "/static/media/kyoyuzen/MiyazakiYuzensai.jpg",
+                "caption": "金箔を貼った美しい仕上がりじゃのう",
+                "alt": "金箔の貼り方"
+            }
+        ]
+    },
+    
+    "変わった模様の作り方ある": {
+        "images": [
+            {
+                "url": "/static/media/kyoyuzen/他の染色技法との違いは.jpg",
+                "caption": "蜘蛛の巣模様など変わった技法があるんじゃよ",
+                "alt": "様々な金彩の模様"
+            }
+        ],
+        "videos": [
+            {
+                "url": "/static/media/kyoyuzen/craftsmanship.mp4",
+                "thumbnail": "/static/media/thumbnails/craftsmanship_thumb.jpg",
+                "caption": "実際の作業を見てみるんじゃ！",
+                "alt": "金彩作業の動画"
+            }
+        ]
+    },
+    
+    "職人として一番苦労したことは": {
+        "videos": [
+            {
+                "url": "/static/media/kyoyuzen/craftsmanship.mp4",
+                "thumbnail": "/static/media/thumbnails/craftsmanship_thumb.jpg",
+                "caption": "こういう細かい作業、本当に難しいんじゃよ...",
+                "alt": "金彩の細かい作業"
+            }
+        ]
+    },
+    
+    # 英語版
+    "What is Kinsai": {
+        "images": [
+            {
+                "url": "/static/media/kyoyuzen/MiyazakiYuzensai.jpg",
+                "caption": "Kimono with Kinsai gold decoration!",
+                "alt": "Beautiful Kyo-Yuzen kimono"
+            }
+        ]
+    },
+    
+    "What tools do you use": {
+        "images": [
+            {
+                "url": "/static/media/kyoyuzen/他の染色技法との違いは.jpg",
+                "caption": "Various tools used in Kinsai",
+                "alt": "Kinsai tools"
+            }
+        ]
+    },
+    
+    "How do you sprinkle gold": {
+        "videos": [
+            {
+                "url": "/static/media/kyoyuzen/craftsmanship.mp4",
+                "thumbnail": "/static/media/thumbnails/craftsmanship_thumb.jpg",
+                "caption": "Watch me work!",
+                "alt": "Kinsai craftsmanship video"
+            }
+        ]
+    },
+    
+    "How do you attach the gold leaf": {
+        "images": [
+            {
+                "url": "/static/media/kyoyuzen/MiyazakiYuzensai.jpg",
+                "caption": "Beautiful finish with gold leaf!",
+                "alt": "Gold leaf application"
+            }
+        ]
+    },
+    
+    "Any interesting pattern techniques": {
+        "images": [
+            {
+                "url": "/static/media/kyoyuzen/他の染色技法との違いは.jpg",
+                "caption": "Spider web patterns and other unique techniques",
+                "alt": "Various Kinsai patterns"
+            }
+        ],
+        "videos": [
+            {
+                "url": "/static/media/kyoyuzen/craftsmanship.mp4",
+                "thumbnail": "/static/media/thumbnails/craftsmanship_thumb.jpg",
+                "caption": "See it in action!",
+                "alt": "Kinsai work demonstration"
+            }
+        ]
+    },
+    
+    "What was your biggest challenge as a craftsperson": {
+        "videos": [
+            {
+                "url": "/static/media/kyoyuzen/craftsmanship.mp4",
+                "thumbnail": "/static/media/thumbnails/craftsmanship_thumb.jpg",
+                "caption": "This delicate work is really tough...",
+                "alt": "Detailed Kinsai work"
+            }
+        ]
+    }
+} 
 
 qa_responses = {
     'ja': {
@@ -61,7 +210,7 @@ qa_responses = {
                 
                 修行時代なんか、緊張で手が震えてな、金箔がブルブル〜って飛んでいったことがあるんじゃ。金箔って本当に軽いから、息を吹きかけただけでフワッて舞い上がっちゃうんじゃよ。
                 
-                あと、金を置きすぎてギラギラになったこともあるのう。先輩に「お前の着物、パチンコ屋の看板みたいじゃぞ」って笑われてな。恥ずかしかったわい。でもそういう失敗があるから、今の自分があるんじゃぞい。
+                あと、金を置きすぎてギラギラになったこともあるのう。でもそういう失敗があるから、今の自分があるんじゃぞい。
                 [EMOTION:sad]
             """,
         },
@@ -212,6 +361,38 @@ suggestions = {
 # 汎用関数（MORI用）
 # ==========================================
 
+# ==========================================
+# CERA版互換関数（application.pyとの互換性確保）
+# ==========================================
+
+def get_qa_by_user_type(user_type='business'):
+    """
+    ユーザータイプに応じたQ&Aデータを返す（CERA版互換）
+    MORI版では言語別のみなので、日本語版を返す
+    
+    Args:
+        user_type: 'business' または 'student'（MORI版では未使用）
+    
+    Returns:
+        dict: Q&Aデータ
+    """
+    # MORI版は言語別のみなので、日本語版を返す
+    return qa_responses.get('ja', {})
+
+def get_suggestions_by_user_type(user_type='business'):
+    """
+    ユーザータイプに応じたサジェスチョンデータを返す（CERA版互換）
+    MORI版では言語別のみなので、日本語版を返す
+    
+    Args:
+        user_type: 'business' または 'student'（MORI版では未使用）
+    
+    Returns:
+        dict: サジェスチョンデータ
+    """
+    # MORI版は言語別のみなので、日本語版を返す
+    return suggestions.get('ja', {})
+
 def get_current_phase(selected_count):
     """
     選択されたサジェスチョン数から現在のPhaseを判定
@@ -230,19 +411,22 @@ def get_current_phase(selected_count):
     else:
         return 'phase3_personal'
 
-def get_suggestions_for_phase(phase, selected_suggestions, user_type='default', language='ja'):
+def get_suggestions_for_phase(phase, selected_suggestions=None, user_type='default', language='ja'):
     """
-    Phaseに応じたサジェスチョンを取得（MORI用）
+    Phaseに応じたサジェスチョンを取得（MORI用 + CERA版互換）
     
     Args:
         phase: 現在のPhase
-        selected_suggestions: 既に選択されたサジェスチョンのリスト
+        selected_suggestions: 既に選択されたサジェスチョンのリスト（デフォルト: []）
         user_type: ユーザータイプ（MORI用では使用しない）
         language: 言語 ('ja' or 'en')
     
     Returns:
         list: サジェスチョンのリスト
     """
+    # selected_suggestionsがNoneの場合は空リストに
+    if selected_suggestions is None:
+        selected_suggestions = []
     # 言語に応じたサジェスチョンを取得
     lang_suggestions = suggestions.get(language, suggestions['ja'])
     phase_suggestions = lang_suggestions.get(phase, [])
@@ -252,19 +436,48 @@ def get_suggestions_for_phase(phase, selected_suggestions, user_type='default', 
     
     return available_suggestions
 
-def get_response_for_user(message, user_type='default', current_phase='phase1_overview', language='ja'):
+def get_suggestions_for_stage(stage, selected_suggestions=None, language='ja'):
     """
-    ユーザーのメッセージに対する応答を取得（MORI用）
+    Stageに応じたサジェスチョンを取得（get_suggestions_for_phaseのエイリアス）
+    application.pyの一部で"stage"という名称が使われているため互換性確保
     
     Args:
-        message: ユーザーのメッセージ
-        user_type: ユーザータイプ（MORI用では使用しない）
-        current_phase: 現在のPhase
+        stage: 現在のStage（Phaseと同義）
+        selected_suggestions: 既に選択されたサジェスチョンのリスト（デフォルト: []）
         language: 言語 ('ja' or 'en')
+    
+    Returns:
+        list: サジェスチョンのリスト
+    """
+    # get_suggestions_for_phaseを呼び出す
+    return get_suggestions_for_phase(stage, selected_suggestions, language=language)
+
+def get_response_for_user(message=None, user_type='default', current_phase='phase1_overview', language='ja', query=None, phase=None):
+    """
+    ユーザーのメッセージに対する応答を取得（MORI用 + CERA版互換）
+    
+    Args:
+        message: ユーザーのメッセージ（MORI版）
+        user_type: ユーザータイプ（MORI用では使用しない）
+        current_phase: 現在のPhase（MORI版）
+        language: 言語 ('ja' or 'en')
+        query: ユーザーの質問（CERA版互換用）
+        phase: Phaseキー（CERA版互換用）
     
     Returns:
         dict or None: 応答データ（見つかった場合）
     """
+    # CERA版互換: queryパラメータをサポート
+    if query is not None:
+        message = query
+    
+    # CERA版互換: phaseパラメータをサポート
+    if phase is not None:
+        current_phase = phase
+    
+    # メッセージがない場合はNoneを返す
+    if not message:
+        return None
     # 正規化（小文字化、空白削除）
     normalized_message = message.lower().replace(' ', '').replace('　', '').replace('？', '').replace('?', '')
     
@@ -312,3 +525,45 @@ def parse_response(response_text):
         'text': clean_text,
         'emotion': emotion
     }
+
+def get_qa_media(question):
+    """
+    質問に紐付くメディアデータを取得（CERA版準拠）
+    
+    Args:
+        question (str): 質問テキスト
+        
+    Returns:
+        dict or None: メディアデータ、存在しない場合はNone
+    """
+    if not question or not qa_media_data:
+        return None
+    
+    # 完全一致チェック（最も高速）
+    if question in qa_media_data:
+        print(f"📷 メディアヒット（完全一致）: {question}")
+        return qa_media_data[question]
+    
+    # 正規化して完全一致チェック
+    question_normalized = question.replace('?', '').replace('？', '').strip()
+    
+    for key in qa_media_data.keys():
+        key_normalized = key.replace('?', '').replace('？', '').strip()
+        if question_normalized == key_normalized:
+            print(f"📷 メディアヒット（正規化一致）: {key}")
+            return qa_media_data[key]
+    
+    # 部分一致チェック（フォールバック）
+    question_lower = question_normalized.lower().replace(' ', '').replace('　', '')
+    
+    for key, media_data in qa_media_data.items():
+        key_lower = key.replace('?', '').replace('？', '').strip().lower().replace(' ', '').replace('　', '')
+        
+        # キーワードマッチング
+        if key_lower in question_lower or question_lower in key_lower:
+            # メディアがある場合のみ返す
+            if media_data.get('images') or media_data.get('videos') or media_data.get('link'):
+                print(f"📷 メディアヒット（部分一致）: {key}")
+                return media_data
+    
+    return None
