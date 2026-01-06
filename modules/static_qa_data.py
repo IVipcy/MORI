@@ -35,7 +35,7 @@ qa_media_data = {
     "金をどうやって貼るの": {
         "images": [
             {
-                "url": "/static/media/kyoyuzen/MiyazakiYuzensai.jpg",
+                "url": "/static/media/kyoyuzen/suggstion3.png",
                 "caption": "金箔を貼った美しい仕上がりじゃのう",
                 "alt": "金箔の貼り方"
             }
@@ -65,55 +65,16 @@ qa_media_data = {
         ]
     },
     
-    "How do you sprinkle gold": {
-        "videos": [
-            {
-                "url": "/static/media/kyoyuzen/craftsmanship.mp4",
-                "thumbnail": "/static/media/thumbnails/craftsmanship_thumb.jpg",
-                "caption": "Watch me work!",
-                "alt": "Kinsai craftsmanship video"
-            }
-        ]
-    },
     
     "How do you attach the gold leaf": {
         "images": [
             {
-                "url": "/static/media/kyoyuzen/MiyazakiYuzensai.jpg",
+                "url": "/static/media/kyoyuzen/suggstion3.png",
                 "caption": "Beautiful finish with gold leaf!",
                 "alt": "Gold leaf application"
             }
         ]
     },
-    
-    "Any interesting pattern techniques": {
-        "images": [
-            {
-                "url": "/static/media/kyoyuzen/他の染色技法との違いは.jpg",
-                "caption": "Spider web patterns and other unique techniques",
-                "alt": "Various Kinsai patterns"
-            }
-        ],
-        "videos": [
-            {
-                "url": "/static/media/kyoyuzen/craftsmanship.mp4",
-                "thumbnail": "/static/media/thumbnails/craftsmanship_thumb.jpg",
-                "caption": "See it in action!",
-                "alt": "Kinsai work demonstration"
-            }
-        ]
-    },
-    
-    "What was your biggest challenge as a craftsperson": {
-        "videos": [
-            {
-                "url": "/static/media/kyoyuzen/craftsmanship.mp4",
-                "thumbnail": "/static/media/thumbnails/craftsmanship_thumb.jpg",
-                "caption": "This delicate work is really tough...",
-                "alt": "Detailed Kinsai work"
-            }
-        ]
-    }
 } 
 
 qa_responses = {
@@ -442,7 +403,7 @@ def get_response_for_user(message=None, user_type='default', current_phase='phas
         phase: Phaseキー（CERA版互換用）
     
     Returns:
-        str or None: 回答テキスト（CERA版互換のため文字列を返す）
+        dict or None: {'text': str, 'emotion': str} 形式の辞書、見つからない場合はNone
     """
     # CERA版互換: queryパラメータをサポート
     if query is not None:
@@ -456,7 +417,7 @@ def get_response_for_user(message=None, user_type='default', current_phase='phas
     if not message:
         return None
     
-    # 正規化（小文字化、空白削除）
+    # 正規化（小文字化、空白削除、疑問符削除）
     normalized_message = message.lower().replace(' ', '').replace('　', '').replace('？', '').replace('?', '')
     
     # MORI版: 言語別のQ&Aデータ
@@ -475,16 +436,20 @@ def get_response_for_user(message=None, user_type='default', current_phase='phas
     # 指定Phase内で検索
     if phase_qa:
         for key, response in phase_qa.items():
-            normalized_key = key.lower().replace(' ', '').replace('　', '')
+            # キーも同様に正規化（疑問符を削除）
+            normalized_key = key.lower().replace(' ', '').replace('　', '').replace('？', '').replace('?', '')
             if normalized_key in normalized_message or normalized_message in normalized_key:
-                return response  # CERA版互換: 文字列を直接返す
+                # parse_response()を使って辞書形式に変換
+                return parse_response(response)
     
     # 全Phase横断検索
     for phase_name, qa_dict in qa_data.items():
         for key, response in qa_dict.items():
-            normalized_key = key.lower().replace(' ', '').replace('　', '')
+            # キーも同様に正規化（疑問符を削除）
+            normalized_key = key.lower().replace(' ', '').replace('　', '').replace('？', '').replace('?', '')
             if normalized_key in normalized_message or normalized_message in normalized_key:
-                return response  # CERA版互換: 文字列を直接返す
+                # parse_response()を使って辞書形式に変換
+                return parse_response(response)
     
     return None
 
