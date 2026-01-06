@@ -337,7 +337,7 @@ def get_current_phase(selected_count):
 
 def get_suggestions_for_phase(phase, selected_suggestions=None, user_type='default', language='ja'):
     """
-    Phaseに応じたサジェスチョンを取得（CERA版完全互換）
+    Phaseに応じたサジェスチョンを取得（CERA版完全互換 + 自動Phase遷移）
     
     Args:
         phase: 現在のPhase
@@ -347,6 +347,9 @@ def get_suggestions_for_phase(phase, selected_suggestions=None, user_type='defau
     
     Returns:
         list: サジェスチョンのリスト（最大3個、CERA版準拠）
+        
+    Note:
+        現在のPhaseでサジェスチョンが空の場合、自動的に次のPhaseから取得を試みます
     """
     import random
     
@@ -354,25 +357,48 @@ def get_suggestions_for_phase(phase, selected_suggestions=None, user_type='defau
     if selected_suggestions is None:
         selected_suggestions = []
     
-    # CERA版: ユーザータイプ別サジェスチョン
-    if user_type in ['business', 'student']:
-        suggestions_data = get_suggestions_by_user_type(user_type)
-        phase_suggestions = suggestions_data.get(phase, [])
-    else:
-        # MORI版: 言語別サジェスチョン
-        lang_suggestions = suggestions.get(language, suggestions['ja'])
-        phase_suggestions = lang_suggestions.get(phase, [])
+    # Phase順序（フォールバック用）
+    phase_order = ['phase1_overview', 'phase2_technical', 'phase3_personal']
     
-    # 重複を排除（CERA版互換: 小文字化＋strip）
+    # 現在のPhaseのインデックスを取得
+    try:
+        current_phase_index = phase_order.index(phase)
+    except ValueError:
+        current_phase_index = 0
+        phase = phase_order[0]
+    
+    # 重複排除用
     selected_lower = {s.lower().strip() for s in selected_suggestions}
-    available = [s for s in phase_suggestions if s.lower().strip() not in selected_lower]
     
-    # 3個以下の場合はそのまま返す
-    if len(available) <= 3:
-        return available
+    # 現在のPhaseから順に試行
+    for try_phase in phase_order[current_phase_index:]:
+        # サジェスチョンデータを取得
+        if user_type in ['business', 'student']:
+            suggestions_data = get_suggestions_by_user_type(user_type)
+            phase_suggestions = suggestions_data.get(try_phase, [])
+        else:
+            # MORI版: 言語別サジェスチョン
+            lang_suggestions = suggestions.get(language, suggestions['ja'])
+            phase_suggestions = lang_suggestions.get(try_phase, [])
+        
+        # 選択済みを除外
+        available = [s for s in phase_suggestions if s.lower().strip() not in selected_lower]
+        
+        # サジェスチョンがあれば返す
+        if available:
+            if try_phase != phase:
+                print(f"📋 Phase自動遷移: {phase} → {try_phase} (前のPhaseが空のため)")
+            
+            # 3個以下の場合はそのまま返す
+            if len(available) <= 3:
+                return available
+            
+            # ランダムに3個選択（CERA版互換）
+            return random.sample(available, 3)
     
-    # ランダムに3個選択（CERA版互換）
-    return random.sample(available, 3)
+    # 全Phaseで空の場合は空リストを返す
+    print(f"⚠️ 全Phaseでサジェスチョンが空です")
+    return []
 
 def get_suggestions_for_stage(stage, selected_suggestions=None, language='ja'):
     """
