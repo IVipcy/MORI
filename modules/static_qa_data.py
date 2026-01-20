@@ -14,7 +14,7 @@ qa_media_data = {
     "挿し友禅って何": {
         "images": [
             {
-                "url": "/static/media/kyoyuzen/suggestion1.png",
+                "url": "/static/media/kyoyuzen/Sashiyuzen.png",
                 "caption": "挿し友禅で色を挿した着物じゃよ",
                 "alt": "京友禅の美しい着物"
             }
@@ -24,19 +24,30 @@ qa_media_data = {
     "どんな道具を使うの": {
         "images": [
             {
-                "url": "/static/media/kyoyuzen/suggestion2.jpg",
+                "url": "/static/media/kyoyuzen/Tool.png",
                 "caption": "挿し友禅で使う筆や刷毛じゃ",
                 "alt": "挿し友禅の道具"
             }
         ]
     },
     
-    "ぼかしってどうやるの": {
+    "色が混ざらないのはなぜ": {
         "images": [
             {
-                "url": "/static/media/kyoyuzen/suggstion3.png",
-                "caption": "ぼかしの技法で仕上げた模様じゃよ",
-                "alt": "ぼかし技法"
+                "url": "/static/media/kyoyuzen/Norioki.png",
+                "caption": "糸目糊で色が混ざらないようにするんじゃ",
+                "alt": "糸目糊の技法"
+            }
+        ]
+    },
+    
+    "ぼかしってどうやるの": {
+        "videos": [
+            {
+                "url": "/static/media/kyoyuzen/Bokashi.mp4",
+                "thumbnail": "/static/media/thumbnails/Bokashi.png",
+                "caption": "ぼかしの技法を見せるぞい",
+                "alt": "ぼかし技法の動画"
             }
         ]
     },
@@ -45,7 +56,7 @@ qa_media_data = {
     "What is Sashi-Yuzen": {
         "images": [
             {
-                "url": "/static/media/kyoyuzen/suggestion1.png",
+                "url": "/static/media/kyoyuzen/Sashiyuzen.png",
                 "caption": "Kimono with Sashi-Yuzen coloring!",
                 "alt": "Beautiful Kyo-Yuzen kimono"
             }
@@ -55,19 +66,30 @@ qa_media_data = {
     "What tools do you use": {
         "images": [
             {
-                "url": "/static/media/kyoyuzen/suggestion2.jpg",
+                "url": "/static/media/kyoyuzen/Tool.png",
                 "caption": "Brushes used in Sashi-Yuzen",
                 "alt": "Sashi-Yuzen tools"
             }
         ]
     },
     
-    "How do you do bokashi": {
+    "Why don't the colors mix": {
         "images": [
             {
-                "url": "/static/media/kyoyuzen/suggstion3.png",
-                "caption": "Pattern finished with bokashi technique!",
-                "alt": "Bokashi technique"
+                "url": "/static/media/kyoyuzen/Norioki.png",
+                "caption": "Itome-nori prevents colors from mixing!",
+                "alt": "Itome-nori technique"
+            }
+        ]
+    },
+    
+    "How do you do bokashi": {
+        "videos": [
+            {
+                "url": "/static/media/kyoyuzen/Bokashi.mp4",
+                "thumbnail": "/static/media/thumbnails/Bokashi.png",
+                "caption": "Watch the bokashi technique!",
+                "alt": "Bokashi technique video"
             }
         ]
     },
@@ -82,7 +104,6 @@ qa_responses = {
                 
                 友禅染の中で最も絵画的で華やかな部分を担当しておってな、この工程があるから京友禅は美しい色彩を持つようになるんじゃ。
                 
-                わしは先祖代々この仕事をやっておるんじゃが、色を「挿す」から「差す」...つまり「刺す」じゃなくて良かったのう！痛くないからな。ハハハ！
                 [EMOTION:happy]
             """,
             
@@ -91,8 +112,8 @@ qa_responses = {
                 
                 筆の種類もいろいろあってな、細かい部分には小さい筆、広い面には大きい刷毛を使い分けるんじゃよ。
                 
-                道具は大切にしておるから、毎日手入れするんじゃ。筆は洗ってから乾かして、形を整えておくんじゃよ。筆を大事にせんと「フデ」がいのう、なんちゃって！ハハハ！
-                [EMOTION:happy]
+                道具は大切にしておるから、毎日手入れするんじゃ。筆は洗ってから乾かして、形を整えておくんじゃよ。道具を大事にせんと良い仕事はできんからのう。
+                [EMOTION:neutral]
             """,
             
             "京友禅の特徴は": """
@@ -100,7 +121,7 @@ qa_responses = {
                 
                 江戸時代から続く技術でな、一枚の着物を作るのに何人もの職人が関わるんじゃ。わしは色を挿す担当じゃな。
                 
-                他の染色技法と比べて、繊細な色の表現ができるのが京友禅の魅力じゃと思うんじゃ。「友禅」と「有線」...どっちも繋がりが大事じゃのう！ハハハ！
+                他の染色技法と比べて、繊細な色の表現ができるのが京友禅の魅力じゃと思うんじゃ。！
                 [EMOTION:neutral]
             """
         },
@@ -121,17 +142,17 @@ qa_responses = {
                 
                 糸目糊はわしがやる前の工程で、別の職人さんがやってくれるんじゃよ。まるで線画みたいに見えてな、その中にわしが色を塗っていく感じじゃ。
                 
-                この糸目糊があるから、京友禅は鮮やかな色分けができるんじゃな。糸目糊様様じゃ！「糊」だけに、この技術は「ノリ」に乗っておるのう！ハハハ！
+                この糸目糊があるから、京友禅は鮮やかな色分けができるんじゃな。糸目糊様様じゃ！
                 [EMOTION:happy]
             """,
             
             "染料の調合で工夫していることは": """
-                染料の調合はレシピみたいなものがあるんじゃが、同じ分量でも微妙に違う色になることがあるんじゃよ。
+                染料の調合はレシピみたいなものがあるんじゃが、その日の気温や湿度で同じ分量でも微妙に違う色になることがあるんじゃよ。
                 
-                じゃから毎回、小さい布で試し染めをして色を確認するんじゃ。補色を少し混ぜて深みを出したり、「サビ」をつけることもあるんじゃよ。
+                じゃから毎回、小さい布で試し染めをして色を確認するんじゃ。納得がいくまで何度も調整するのが大事じゃな。
                 
-                淡い色には「具入り」という技法で、量感を与えることもあるんじゃ。色の世界は奥が深いのう。染料を「染めりょう」と読むのは...やめとくかのう。ハハハ！
-                [EMOTION:happy]
+                着る人の顔を思い浮かべながら、一番いい色が出るまで妥協はせんぞい。色の世界は奥が深いのう。
+                [EMOTION:neutral]
             """,
             
             "乾燥の工夫について教えて": """
@@ -139,7 +160,7 @@ qa_responses = {
                 
                 じゃから友禅机の下に電熱器を置いて、布を熱で炙りながら作業することが多いんじゃ。特に湿度が高い日は気をつけるんじゃよ。
                 
-                乾燥のタイミングを見極めるのも、経験が必要じゃな。焦りすぎると色が変わっちゃうこともあるんじゃ。乾燥は「カン」が大事じゃ！「乾燥」だけに！なんちゃって！ハハハ！
+                乾燥のタイミングを見極めるのも、経験が必要じゃな。焦りすぎると色が変わっちゃうこともあるんじゃ。！
                 [EMOTION:happy]
             """,
         },
@@ -151,7 +172,7 @@ qa_responses = {
                 
                 先輩に何度も教えてもらって、手の動かし方や力加減を覚えたんじゃ。今でも難しい模様に出会うと緊張するが、それが楽しくもあるんじゃよ。
                 
-                一枚の着物を完成させるのに何ヶ月もかかるから、根気が必要な仕事じゃな。でも出来上がった時の達成感は最高じゃ。苦労の「クロウ」は「黒う」...いや、色んな色を使う仕事じゃから苦労も「色々」じゃのう！ハハハ！
+                一枚の着物を完成させるのに何ヶ月もかかるから、根気が必要な仕事じゃな。でも出来上がった時の達成感は最高じゃ。色んな色を使う仕事じゃから苦労も「色々」じゃのう！ハハハ！
                 [EMOTION:happy]
             """,
             
@@ -178,7 +199,7 @@ qa_responses = {
                 
                 あとな、着物を買ってくれた人が「こんな素敵な着物をありがとう」って写真を送ってくれることがあるんじゃよ。それを見ると、この仕事をやっててよかったなぁと思うんじゃ。
                 
-                発表会で賞を受賞した時も嬉しかったのう。でも一番は、お客さんが喜んでくれることじゃな。「嬉しい」が「う・れ・し・い」...4文字じゃな。職人歴40年以上のわしには10倍嬉しいってことじゃ！ハハハ！
+                発表会で賞を受賞した時も嬉しかったのう。でも一番は、お客さんが喜んでくれることじゃな。
                 [EMOTION:happy]
             """,
         }

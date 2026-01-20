@@ -737,14 +737,14 @@ class ElevenLabsClient:
 
 # ====== 【修正箇所】理解度レベル管理システム ======
 def calculate_relationship_level(conversation_count):
-    """会話回数から理解度レベルを判定"""
-    if conversation_count < 2:
+    """会話回数から理解度レベルを判定（全サジェスチョン11個に合わせて調整）"""
+    if conversation_count < 3:
         return {'level': 0, 'style': 'formal', 'name': '-'}
-    elif conversation_count < 4:
+    elif conversation_count < 5:
         return {'level': 1, 'style': 'casual_polite', 'name': 'Level 1'}
-    elif conversation_count < 6:
-        return {'level': 2, 'style': 'friendly', 'name': 'Level 2'}
     elif conversation_count < 8:
+        return {'level': 2, 'style': 'friendly', 'name': 'Level 2'}
+    elif conversation_count < 11:
         return {'level': 3, 'style': 'close', 'name': 'Level 3'}
     else:
         return {'level': 4, 'style': 'best_friend', 'name': 'MAX'}
@@ -1799,6 +1799,8 @@ def handle_connect():
             'language': language,
             'voice_engine': 'elevenlabs' if (use_elevenlabs and language == 'ja') else ('azure_speech' if (use_azure_speech and language == 'ja') else 'openai_tts'),
             'relationshipLevel': relationship_style,
+            'relationshipLevelName': rel_info['name'],  # 🎯 追加: レベル名（MAX判定用）
+            'conversationCount': conversation_count,  # 🎯 追加: 会話回数
             'mentalState': data['mental_state'],
             'enableUserTypeSelection': ENABLE_USER_TYPE_SELECTION  # 🐶 フラグを送信
         }

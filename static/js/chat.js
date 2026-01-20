@@ -2698,6 +2698,13 @@
         
         appState.isWaitingResponse = false;
         updateConnectionStatus('connected');
+        
+        // 🎯 追加: 再接続時にMAXレベル＆クイズ未完了ならクイズ提案フラグを立てる
+        if (data.relationshipLevelName === 'MAX' && !quizState.hasCompletedQuiz && !quizState.isActive) {
+            console.log('🎯 再接続時MAX検出：クイズ提案フラグをセット');
+            quizState.isQuizAvailable = true;
+            quizState.shouldProposeQuizAfterConversation = true;
+        }
     }
     
     // 🆕 京セラCERA用: ユーザー属性選択完了ハンドラー
