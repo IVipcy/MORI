@@ -1431,7 +1431,7 @@
             // ダウンロードボタン
             const downloadButton = document.createElement('a');
             downloadButton.href = media.downloadUrl;
-            downloadButton.download = 'cera_reward.png';
+            downloadButton.download = 'mori.png';
             downloadButton.className = 'reward-media-download';
             downloadButton.textContent = media.downloadText;
             downloadButton.target = '_blank';
@@ -3461,13 +3461,13 @@
         
         const rewardImage = document.createElement('img');
         rewardImage.src = '/api/reward-image';
-        rewardImage.alt = 'REI Wallpaper';
+        rewardImage.alt = 'Mori Wallpaper';
         rewardImage.className = 'reward-image';
         rewardContainer.appendChild(rewardImage);
         
         const downloadButton = document.createElement('a');
         downloadButton.href = '/api/reward-image';
-        downloadButton.download = 'REI_Wallpaper.png';
+        downloadButton.download = 'mori.png';
         downloadButton.className = 'reward-download-button';
         downloadButton.textContent = isJapanese ? 'ダウンロード' : 'Download';
         rewardContainer.appendChild(downloadButton);

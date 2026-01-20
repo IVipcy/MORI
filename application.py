@@ -303,7 +303,7 @@ QUIZ_DATA = {
                 'C) 布を水で洗って仕上げる工程'
             ],
             'correct': 1,
-            'explanation': '正解じゃ！挿し友禅は筆や刷毛で手作業で模様に色を挿していく工程のことじゃよ。友禅染の中で最も絵画的で華やかな部分を担当しておってな、この工程があるから京友禅は美しい色彩を持つようになるんじゃ。色を「挿す」から「刺す」じゃなくて良かったのう！ハハハ！✨'
+            'explanation': '正解じゃ！挿し友禅は筆や刷毛で手作業で模様に色を挿していく工程のことじゃよ。友禅染の中で最も絵画的で華やかな部分を担当しておってな、この工程があるから京友禅は美しい色彩を持つようになるんじゃ✨'
         },
         {
             'question': '「ぼかし」という技法について、正しい説明はどれ？',
@@ -1519,7 +1519,7 @@ def get_reward_image():
     """クイズ報酬の待ち受け画像を提供"""
     try:
         # 画像ファイルのパスを指定
-        image_path = os.path.join(app.static_folder, 'images', 'rei_wallpaper.png')
+        image_path = os.path.join(app.static_folder, 'images', 'mori.png')
         
         if not os.path.exists(image_path):
             # 画像が存在しない場合はダミー画像を生成
@@ -2376,13 +2376,13 @@ def handle_quiz_answer(data):
     
     if is_correct:
         result_text = {
-            'ja': 'すごい！正解です！',
+            'ja': 'おお正解じゃ！',
             'en': 'Amazing! Correct!'
         }
         emotion = 'surprise'
     else:
         result_text = {
-            'ja': 'あぁ、惜しいです！',
+            'ja': 'あぁ、惜しいのう！',
             'en': 'Oh, so close!'
         }
         emotion = 'sad'
