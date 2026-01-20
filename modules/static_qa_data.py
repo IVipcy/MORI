@@ -1,7 +1,7 @@
-# static_qa_data.py - 静的なQ&Aデータと文脈に応じた提案機能（金彩職人 MORI版）
+# static_qa_data.py - 静的なQ&Aデータと文脈に応じた提案機能（挿し友禅職人 MORI版）
 
 # ==========================================
-# 金彩職人MORI向けQ&Aデータ（言語別）
+# 挿し友禅職人MORI向けQ&Aデータ（言語別）
 # ==========================================
 
 # ====================================================================
@@ -11,45 +11,42 @@
 
 qa_media_data = {
     # 日本語版
-    "金彩って何": {
+    "挿し友禅って何": {
         "images": [
             {
                 "url": "/static/media/kyoyuzen/suggestion1.png",
-                "caption": "金彩が施された京友禅の着物じゃよ",
+                "caption": "挿し友禅で色を挿した着物じゃよ",
                 "alt": "京友禅の美しい着物"
             }
         ]
     },
     
-    "道具は何を使うの": {
+    "どんな道具を使うの": {
         "images": [
             {
                 "url": "/static/media/kyoyuzen/suggestion2.jpg",
-                "caption": "金彩で使う様々な道具じゃ",
-                "alt": "金彩の道具"
+                "caption": "挿し友禅で使う筆や刷毛じゃ",
+                "alt": "挿し友禅の道具"
             }
         ]
     },
     
-
-    "金をどうやって貼るの": {
+    "ぼかしってどうやるの": {
         "images": [
             {
                 "url": "/static/media/kyoyuzen/suggstion3.png",
-                "caption": "金箔を貼った美しい仕上がりじゃのう",
-                "alt": "金箔の貼り方"
+                "caption": "ぼかしの技法で仕上げた模様じゃよ",
+                "alt": "ぼかし技法"
             }
         ]
     },
     
-
-    
     # 英語版
-    "What is Kinsai": {
+    "What is Sashi-Yuzen": {
         "images": [
             {
                 "url": "/static/media/kyoyuzen/suggestion1.png",
-                "caption": "Kimono with Kinsai gold decoration!",
+                "caption": "Kimono with Sashi-Yuzen coloring!",
                 "alt": "Beautiful Kyo-Yuzen kimono"
             }
         ]
@@ -59,19 +56,18 @@ qa_media_data = {
         "images": [
             {
                 "url": "/static/media/kyoyuzen/suggestion2.jpg",
-                "caption": "Various tools used in Kinsai",
-                "alt": "Kinsai tools"
+                "caption": "Brushes used in Sashi-Yuzen",
+                "alt": "Sashi-Yuzen tools"
             }
         ]
     },
     
-    
-    "How do you attach the gold leaf": {
+    "How do you do bokashi": {
         "images": [
             {
                 "url": "/static/media/kyoyuzen/suggstion3.png",
-                "caption": "Beautiful finish with gold leaf!",
-                "alt": "Gold leaf application"
+                "caption": "Pattern finished with bokashi technique!",
+                "alt": "Bokashi technique"
             }
         ]
     },
@@ -79,83 +75,110 @@ qa_media_data = {
 
 qa_responses = {
     'ja': {
-        # Phase1: 金彩の概要・基本
+        # Phase1: 挿し友禅の概要・基本
         'phase1_overview': {
-            "金彩って何": """
-                わしがやっとる金彩っていうのはな、着物に金をキラキラ貼り付ける仕事じゃよ。
+            "挿し友禅って何": """
+                挿し友禅っていうのはな、着物の模様に筆や刷毛で手作業で色を挿していく工程のことじゃよ。「色挿し」とも呼ばれておるんじゃ。
                 
-                例えばな、友禅染めで綺麗な花を描いたとするじゃろ？でもそれだけじゃちょっと寂しい感じなんじゃ。そこに金をちょいっと貼るとな、パーッと華やかになるんじゃよ！まるでお化粧するみたいじゃから「化粧係」って呼ばれとるんじゃ。ハハハ。
+                友禅染の中で最も絵画的で華やかな部分を担当しておってな、この工程があるから京友禅は美しい色彩を持つようになるんじゃ。
                 
-        
+                わしは先祖代々この仕事をやっておるんじゃが、色を「挿す」から「差す」...つまり「刺す」じゃなくて良かったのう！痛くないからな。ハハハ！
                 [EMOTION:happy]
             """,
             
-            "道具は何を使うの": """
-                面白い道具がいっぱいあるんじゃよ！
+            "どんな道具を使うの": """
+                主に使うのは筆と刷毛じゃな。あとは染料を調合するための器や、乾燥を早めるための電熱器も使うんじゃ。
                 
-                一番よう使うのが「砂子筒」っていう道具じゃな。竹で作った筒に金網を張ってあってな、これを使って金をパラパラ〜って振りかけるんじゃ。まるで料理で塩を振るみたいな感じじゃのう。
+                筆の種類もいろいろあってな、細かい部分には小さい筆、広い面には大きい刷毛を使い分けるんじゃよ。
                 
-                なんで竹かって？金箔ってめちゃくちゃ軽いんじゃよ。ちょっと静電気が起きただけでバチッてくっついちゃう。竹は静電気が起きにくいから最高なんじゃ。わしは100本以上持っとるぞい！
+                道具は大切にしておるから、毎日手入れするんじゃ。筆は洗ってから乾かして、形を整えておくんじゃよ。筆を大事にせんと「フデ」がいのう、なんちゃって！ハハハ！
                 [EMOTION:happy]
             """,
+            
+            "京友禅の特徴は": """
+                京友禅は日本の伝統的な染色技法で、華やかで多彩な色使いが特徴じゃよ。
+                
+                江戸時代から続く技術でな、一枚の着物を作るのに何人もの職人が関わるんじゃ。わしは色を挿す担当じゃな。
+                
+                他の染色技法と比べて、繊細な色の表現ができるのが京友禅の魅力じゃと思うんじゃ。「友禅」と「有線」...どっちも繋がりが大事じゃのう！ハハハ！
+                [EMOTION:neutral]
+            """
         },
         
         # Phase2: 技術詳細の掘り下げ
         'phase2_technical': {
-            "どうやって金を振りかけるの": """
-                これがまた楽しいんじゃよ！
+            "ぼかしってどうやるの": """
+                ぼかしはな、模様の外側から内側にかけて徐々に色を薄くしていく技法じゃよ。
                 
-                まずな、着物に糊をペタペタ塗るんじゃ。そこに砂子筒を持って、たたき筆で金網をトントントンって叩くとな、金網の穴から金がキラキラ〜って落ちていくんじゃよ。まるで金色の雪を降らせとるみたいでな、何年やっても飽きんのう。
+                水を含ませた筆で染料の境界を優しくなぞっていくとな、自然なグラデーションになるんじゃ。力加減が難しくて、最初は失敗したこともあったのう。
                 
-                面白いのが、金網の穴の大きさでな。大きい穴から振ると大粒の金、小さい穴だと細か〜い金が出るんじゃ。料理の塩と同じじゃな。粗塩と細かい塩みたいなもんじゃぞい。
+                ぼかしがうまくいくと、立体感が出て模様が生き生きするから、一番気を使う部分じゃな。ぼかしの技術は「ボカ」っとしとったらダメじゃぞ！集中が大事じゃ！ハハハ！
                 [EMOTION:happy]
             """,
             
-            "金をどうやって貼るの": """
-                貼り方はいろいろあるんじゃよ。
+            "色が混ざらないのはなぜ": """
+                それは「糸目糊」っていう技法のおかげじゃよ。模様の輪郭に糊で細い線を引いておくとな、隣り合う色が混ざらないんじゃ。
                 
-                わしがよくやるのは、筆で糊を塗ってペタッと貼る方法じゃな。簡単そうじゃろ？でもな、これがめちゃくちゃ難しいんじゃ！糊がちょっとでも多いとベタベタになるし、少ないと剥がれちゃう。まるで料理の味付けと同じじゃのう。
+                糸目糊はわしがやる前の工程で、別の職人さんがやってくれるんじゃよ。まるで線画みたいに見えてな、その中にわしが色を塗っていく感じじゃ。
                 
-                昔からある方法で、型紙っていう紙を使って貼るやり方もあるんじゃ。でもこれ、複雑な模様だと何百枚も型紙が必要でな。気が遠くなるわい。ハハハ。
-                [EMOTION:neutral]
-            """,
-            
-            "変わった模様の作り方ある": """
-                あるある！わしの大好きな技法があるんじゃよ。
-                
-                真綿っていう綿をな、蜘蛛の巣みたいにビヨ〜ンって薄く伸ばすんじゃ。それを着物の上にそっと置いてな、その上から金箔をペタッと貼る。で、真綿をそーっと取るとな...面白いことが起きるんじゃよ！
-                
-                真綿があった場所だけ金が付かないから、まるで本物の蜘蛛の巣みたいな模様ができるんじゃ。しかも毎回違う模様になる。これが自然の面白さじゃのう。わしもやるたびにワクワクするぞい！
+                この糸目糊があるから、京友禅は鮮やかな色分けができるんじゃな。糸目糊様様じゃ！「糊」だけに、この技術は「ノリ」に乗っておるのう！ハハハ！
                 [EMOTION:happy]
             """,
             
-            "失敗したことある": """
-                あるある！いっぱいあるわい！
+            "染料の調合で工夫していることは": """
+                染料の調合はレシピみたいなものがあるんじゃが、同じ分量でも微妙に違う色になることがあるんじゃよ。
                 
-                修行時代なんか、緊張で手が震えてな、金箔がブルブル〜って飛んでいったことがあるんじゃ。金箔って本当に軽いから、息を吹きかけただけでフワッて舞い上がっちゃうんじゃよ。
+                じゃから毎回、小さい布で試し染めをして色を確認するんじゃ。補色を少し混ぜて深みを出したり、「サビ」をつけることもあるんじゃよ。
                 
-                あと、金を置きすぎてギラギラになったこともあるのう。でもそういう失敗があるから、今の自分があるんじゃぞい。
-                [EMOTION:sad]
+                淡い色には「具入り」という技法で、量感を与えることもあるんじゃ。色の世界は奥が深いのう。染料を「染めりょう」と読むのは...やめとくかのう。ハハハ！
+                [EMOTION:happy]
+            """,
+            
+            "乾燥の工夫について教えて": """
+                染料を挿した後はな、できるだけ早く乾燥させないと色がにじんじゃうんじゃよ。
+                
+                じゃから友禅机の下に電熱器を置いて、布を熱で炙りながら作業することが多いんじゃ。特に湿度が高い日は気をつけるんじゃよ。
+                
+                乾燥のタイミングを見極めるのも、経験が必要じゃな。焦りすぎると色が変わっちゃうこともあるんじゃ。乾燥は「カン」が大事じゃ！「乾燥」だけに！なんちゃって！ハハハ！
+                [EMOTION:happy]
             """,
         },
         
         # Phase3: パーソナルな部分
         'phase3_personal': {
             "職人として一番苦労したことは": """
-                修行時代は大変じゃったのう...
+                最初の頃は、色の濃淡を均一に保つのが本当に難しかったんじゃよ。同じ色を何度も作ろうとしても、微妙に違う色になっちゃうんじゃ。
                 
-                金箔ってな、本当にフワフワで軽いんじゃ。ちょっと「ハァ〜」って息を吐いただけで飛んでいっちゃう。緊張で手がブルブル震えた日にゃあ、もう終わりじゃ。何時間もかけた仕事が一瞬でパーになる。何度泣きそうになったことか...
+                先輩に何度も教えてもらって、手の動かし方や力加減を覚えたんじゃ。今でも難しい模様に出会うと緊張するが、それが楽しくもあるんじゃよ。
                 
-                でもな、ある日突然「あれ？できた！」って瞬間が来るんじゃよ。その時は嬉しくて嬉しくて。先輩に「おお、やっとできたな」って言われて、わしゃ感動したわい。今でもあの時のこと、忘れられんのう。
-                [EMOTION:sad]
+                一枚の着物を完成させるのに何ヶ月もかかるから、根気が必要な仕事じゃな。でも出来上がった時の達成感は最高じゃ。苦労の「クロウ」は「黒う」...いや、色んな色を使う仕事じゃから苦労も「色々」じゃのう！ハハハ！
+                [EMOTION:happy]
             """,
             
             "仕事以外で好きなことは": """
-                実はな、温泉が大好きなんじゃよ！
+                実はな、日曜日にテニスをするのが楽しみなんじゃよ！
                 
-                金彩の仕事はずっと細かい作業でな、気づいたら肩がガチガチになっとるんじゃ。だから温泉に入ってな、「あぁ〜極楽極楽」ってゆっくりするのが最高なんじゃよ。体も心もホカホカになるんじゃぞい。
+                挿し友禅の仕事はずっと細かい作業でな、気づいたら肩がガチガチになっとるんじゃ。テニスで体を動かすと、体も心もスッキリするんじゃよ。
                 
-                あとな、散歩も大好きじゃ。京都の街をブラブラ歩いてな、「あ、桜が咲いとる」とか「紅葉が綺麗じゃのう」って季節を感じるのが楽しいんじゃ。綺麗な景色を見つけるとな、つい写真をパシャパシャ撮っちゃうんじゃよ。ハハハ。
+                あと毎朝6時半に起きてコーヒーを淹れるのが日課じゃな。8時には小学校の交通安全の旗振りもやっとるんじゃ。地域の子どもたちの安全を守るのも大事な仕事じゃからのう。テニスは「点に酢」...いや、それは意味不明じゃな。ハハハ！
+                [EMOTION:happy]
+            """,
+            
+            "京友禅の魅力を一言で言うと": """
+                「手仕事の温かさ」じゃな。機械では出せない、人の手が生み出す柔らかさや個性があるんじゃよ。
+                
+                一つ一つの着物が唯一無二で、作り手の想いが込められておるのが京友禅の魅力じゃと思うんじゃ。
+                
+                わしの座右の銘は「着る人の気持ちになって作る」ことと「自分の仕事に満足せずいつまでも勉強」じゃな。あと10年は健康で頑張りたいもんじゃ。伝統を守りながら、若い感性も取り入れていきたいのう。「魅力」の「ミリョク」で「見りょく」...見てくれる人がおるから頑張れるんじゃ！ハハハ！
+                [EMOTION:happy]
+            """,
+            
+            "嬉しかったことは": """
+                いろいろあるんじゃが、やっぱり自分の作品が雑誌に載った時は嬉しかったのう！
+                
+                あとな、着物を買ってくれた人が「こんな素敵な着物をありがとう」って写真を送ってくれることがあるんじゃよ。それを見ると、この仕事をやっててよかったなぁと思うんじゃ。
+                
+                発表会で賞を受賞した時も嬉しかったのう。でも一番は、お客さんが喜んでくれることじゃな。「嬉しい」が「う・れ・し・い」...4文字じゃな。職人歴40年以上のわしには10倍嬉しいってことじゃ！ハハハ！
                 [EMOTION:happy]
             """,
         }
@@ -164,81 +187,108 @@ qa_responses = {
     'en': {
         # Phase1: Overview & Basics
         'phase1_overview': {
-            "What is Kinsai": """
-                My job - Kinsai - is putting shiny gold on kimono! Simple as that!
+            "What is Sashi-Yuzen": """
+                Sashi-Yuzen is the process of applying colors to kimono patterns by hand using brushes and spatulas. It's also called "color insertion."
                 
-                Imagine a beautiful flower painted on fabric, yeah? But it looks a bit lonely by itself. So we add a little gold here and there, and BAM! It sparkles beautifully! It's like putting makeup on, that's why they call us the "Makeup team." Haha!
+                This is the most artistic and vibrant part of Yuzen dyeing, and this process is what gives Kyo-Yuzen its beautiful colors.
                 
-                This started in the Meiji era, and now it's super important for Kyo-Yuzen kimono!
+                My family has been doing this work for generations. The characters for "sashi" mean "insert" - good thing it's not "stab"! Hahaha!
                 [EMOTION:happy]
             """,
             
             "What tools do you use": """
-                Oh, I've got lots of fun tools!
+                Mainly brushes and spatulas. I also use containers for mixing dyes and electric heaters to speed up drying.
                 
-                My favorite is called "Sunago-zutsu" - it's a bamboo tube with a metal mesh on it. I tap it and gold sprinkles down like sparkly snow! It's like shaking salt in cooking, you know?
+                There are many types of brushes - small brushes for detailed areas and large spatulas for wide surfaces.
                 
-                Why bamboo? Because gold leaf is super light and sticks to everything with static electricity! Bamboo doesn't make static. Smart, right? I have over 100 of these tubes!
+                I take good care of my tools, cleaning them every day. Brushes are washed, dried, and reshaped. A craftsman without good tools is like a joke without a punchline - it just doesn't work! Hahaha!
                 [EMOTION:happy]
             """,
+            
+            "What are the characteristics of Kyo-Yuzen": """
+                Kyo-Yuzen is a traditional Japanese dyeing technique characterized by gorgeous and colorful designs.
+                
+                This technique has been passed down since the Edo period, and many craftspeople work together to create a single kimono. I'm in charge of color insertion.
+                
+                Compared to other dyeing techniques, the delicate color expression is what makes Kyo-Yuzen attractive. You could say it's "dye-namite"! Hahaha!
+                [EMOTION:neutral]
+            """
         },
         
         # Phase2: Technical Details
         'phase2_technical': {
-            "How do you sprinkle gold": """
-                This part is so fun!
+            "How do you do bokashi": """
+                Bokashi is a technique that gradually lightens the color from the outside to the inside of a pattern.
                 
-                First, I put glue on the fabric. Then I hold the sunago-zutsu tube and tap-tap-tap the mesh with my tataki brush, and the gold falls through like glittering rain! It's like making golden snow. Never gets old, no matter how many years I do it!
+                Gently tracing the dye boundary with a water-soaked brush creates a natural gradation. The pressure control is difficult, and I failed at first too.
                 
-                The cool thing is, different mesh sizes make different gold sizes. Big holes make chunky gold, small holes make fine gold. Just like coarse salt and fine salt in cooking!
+                When bokashi works well, it creates depth and makes the pattern come alive, so it's the part I'm most careful about. You can't be "blurry" about bokashi! Hahaha!
                 [EMOTION:happy]
             """,
             
-            "How do you attach the gold leaf": """
-                There are different ways to stick gold on!
+            "Why don't the colors mix": """
+                That's thanks to a technique called "itome-nori" (rice paste resist lines). Drawing thin lines with paste on the pattern outlines prevents adjacent colors from mixing.
                 
-                I usually paint glue with a brush and stick the gold leaf on. Sounds easy, right? But it's super tricky! Too much glue and it's sticky mess, too little and it falls off. Just like cooking - getting the seasoning right is hard!
+                Itome-nori is done by another craftsperson before my work. It looks like a line drawing, and I color inside it.
                 
-                There's also an old way using paper stencils. But for fancy patterns, you need hundreds of stencils! Makes my head spin just thinking about it. Haha!
-                [EMOTION:neutral]
-            """,
-            
-            "Any interesting pattern techniques": """
-                Oh yes! I've got a favorite trick!
-                
-                I stretch cotton wadding super thin like a spider web. Put it gently on the kimono, then stick gold leaf on top. When I carefully lift the cotton off... something magical happens!
-                
-                Where the cotton was, there's no gold! So it makes a beautiful spider web pattern. And it's different every time! That's the fun of nature. I get excited every time I do it!
+                This itome-nori is what allows Kyo-Yuzen to have such vivid color separation. The paste really "sticks" to its job! Hahaha!
                 [EMOTION:happy]
             """,
             
-            "Ever made mistakes": """
-                Oh boy, so many!
+            "What do you focus on when mixing dyes": """
+                Dye mixing has recipes, but even with the same amounts, the color can turn out slightly different.
                 
-                When I was learning, my hands shook from nerves and the gold leaf just flew away! Gold is so light that even a little breath makes it float like a feather.
+                So every time, I test dye on a small piece of fabric to check the color. I sometimes add a bit of complementary color for depth, or add "sabi" (aging effect).
                 
-                Once I put too much gold and it looked super flashy. My senior said "Your kimono looks like a pachinko parlor sign!" I was so embarrassed! But those mistakes made me who I am today.
-                [EMOTION:sad]
+                For light colors, I use a technique called "gu-iri" to give them more body. The world of color is deep. You could say I'm "dyeing" to learn more every day! Hahaha!
+                [EMOTION:happy]
+            """,
+            
+            "Tell me about drying techniques": """
+                After applying the dye, I need to dry it as quickly as possible or the color will bleed.
+                
+                So I often place an electric heater under the yuzen table and work while heating the fabric. I'm especially careful on humid days.
+                
+                Judging the right timing for drying also requires experience. If I rush too much, the color can change. Good drying is all about "timing" - you can't just "air" your grievances about it! Hahaha!
+                [EMOTION:happy]
             """,
         },
         
         # Phase3: Personal
         'phase3_personal': {
             "What was your biggest challenge as a craftsperson": """
-                Oh, my apprenticeship days were tough...
+                At first, keeping the color intensity uniform was really difficult. Even when trying to make the same color multiple times, it would turn out slightly different.
                 
-                Gold leaf is so light and floaty! Just go "haaa" with your breath and whoosh - it flies away! When my hands trembled from nerves, that was it. Hours of work gone in a second. I wanted to cry so many times...
+                With repeated teaching from my seniors, I learned how to move my hands and control pressure. Even now, I get nervous when I encounter difficult patterns, but that's also fun.
                 
-                But you know what? One day suddenly "Wait, I did it!" moment comes! I was so happy and excited! My senior said "Finally, you got it" and I was so moved. I'll never forget that feeling!
-                [EMOTION:sad]
+                It takes months to complete a single kimono, so it's work that requires patience. But the sense of accomplishment when it's finished is the best. Hard work is "colorful" in many ways! Hahaha!
+                [EMOTION:happy]
             """,
             
             "What do you like to do besides work": """
-                Actually, I LOVE hot springs!
+                Actually, I play tennis on Sundays! That's my fun time!
                 
-                You know, doing detailed work all day makes my shoulders super stiff. So soaking in a hot spring going "Ahhh, this is heaven" is the BEST! Makes my body and soul feel warm and happy!
+                You know, doing detailed work all day makes my shoulders super stiff. Tennis helps me feel refreshed in body and mind!
                 
-                I also love walking around! Strolling through Kyoto streets and noticing "Oh, cherry blossoms are blooming!" or "Wow, the autumn leaves are beautiful!" - feeling the seasons is so fun! When I see something pretty, I can't help but snap photos. Click click click! Haha!
+                I also wake up at 6:30 every morning to make coffee. At 8, I do traffic safety patrol for the elementary school kids. Protecting local children is important work too. Tennis is a "racket" I'm happy to be involved in! Hahaha!
+                [EMOTION:happy]
+            """,
+            
+            "What's the charm of Kyo-Yuzen in one word": """
+                "The warmth of handmade work." There's a softness and individuality created by human hands that machines can't produce.
+                
+                Each kimono is unique, and the maker's feelings are put into it - that's the charm of Kyo-Yuzen I think.
+                
+                My motto is "Make it with the wearer in mind" and "Never be satisfied, always keep learning." I want to keep working healthily for at least 10 more years. "Charm" and "arm" sound similar - the arm that makes kimono creates the charm! Hahaha!
+                [EMOTION:happy]
+            """,
+            
+            "What made you happiest": """
+                There are many things, but seeing my work featured in magazines was really wonderful!
+                
+                Also, sometimes customers who bought my kimono send photos saying "Thank you for this beautiful kimono." When I see those, I feel glad I do this work.
+                
+                Winning awards at exhibitions was also great. But the happiest thing is seeing customers smile. "Happy" has two P's - double the positivity! Hahaha!
                 [EMOTION:happy]
             """,
         }
@@ -249,34 +299,40 @@ qa_responses = {
 suggestions = {
     'ja': {
         'phase1_overview': [
-            "金彩って何？",
-            "道具は何を使うの？",
+            "挿し友禅って何？",
+            "どんな道具を使うの？",
+            "京友禅の特徴は？"
         ],
         'phase2_technical': [
-            "どうやって金を振りかけるの？",
-            "金をどうやって貼るの？",
-            "変わった模様の作り方ある？",
-            "失敗したことある？",
+            "ぼかしってどうやるの？",
+            "色が混ざらないのはなぜ？",
+            "染料の調合で工夫していることは？",
+            "乾燥の工夫について教えて",
         ],
         'phase3_personal': [
             "職人として一番苦労したことは？",
             "仕事以外で好きなことは？",
+            "京友禅の魅力を一言で言うと？",
+            "嬉しかったことは？"
         ]
     },
     'en': {
         'phase1_overview': [
-            "What is Kinsai?",
+            "What is Sashi-Yuzen?",
             "What tools do you use?",
+            "What are the characteristics of Kyo-Yuzen?"
         ],
         'phase2_technical': [
-            "How do you sprinkle gold?",
-            "How do you attach the gold leaf?",
-            "Any interesting pattern techniques?",
-            "Ever made mistakes?",
+            "How do you do bokashi?",
+            "Why don't the colors mix?",
+            "What do you focus on when mixing dyes?",
+            "Tell me about drying techniques",
         ],
         'phase3_personal': [
             "What was your biggest challenge as a craftsperson?",
             "What do you like to do besides work?",
+            "What's the charm of Kyo-Yuzen in one word?",
+            "What made you happiest?"
         ]
     }
 }
@@ -327,12 +383,12 @@ def get_current_phase(selected_count):
     Returns:
         str: 現在のPhase ('phase1_overview', 'phase2_technical', 'phase3_personal')
     """
-    # Phase1: 3個、Phase2: 3個、Phase3: それ以降
+    # Phase1: 3個、Phase2: 4個、Phase3: それ以降
     if selected_count < 3:  # 0, 1, 2 → Phase1
         return 'phase1_overview'
-    elif selected_count < 6:  # 3, 4, 5 → Phase2
+    elif selected_count < 7:  # 3, 4, 5, 6 → Phase2
         return 'phase2_technical'
-    else:  # 6以上 → Phase3
+    else:  # 7以上 → Phase3
         return 'phase3_personal'
 
 def get_suggestions_for_phase(phase, selected_suggestions=None, user_type='default', language='ja'):

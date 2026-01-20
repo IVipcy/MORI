@@ -296,66 +296,66 @@ audio_cache = {}
 QUIZ_DATA = {
     'ja': [
         {
-            'question': '金彩職人が「砂子」を振り落とすときに使う道具は何でしょう？',
+            'question': '森さんが話していた「挿し友禅」とは、どんな工程のこと？',
             'options': [
-                'A) 金網を張った竹筒（砂子筒）',
-                'B) 細い筆',
-                'C) 金属製のスプーン'
+                'A) 模様の輪郭に糊を置く工程',
+                'B) 筆や刷毛で模様に色を挿していく工程',
+                'C) 布を水で洗って仕上げる工程'
+            ],
+            'correct': 1,
+            'explanation': '正解じゃ！挿し友禅は筆や刷毛で手作業で模様に色を挿していく工程のことじゃよ。友禅染の中で最も絵画的で華やかな部分を担当しておってな、この工程があるから京友禅は美しい色彩を持つようになるんじゃ。色を「挿す」から「刺す」じゃなくて良かったのう！ハハハ！✨'
+        },
+        {
+            'question': '「ぼかし」という技法について、正しい説明はどれ？',
+            'options': [
+                'A) 模様の外側から内側にかけて徐々に色を薄くしていく技法',
+                'B) 複数の色を混ぜて新しい色を作る技法',
+                'C) 布を熱で炙って乾燥させる技法'
             ],
             'correct': 0,
-            'explanation': '正解じゃ！「砂子筒」っていうのは竹筒に金網を張った道具でな、中に箔を入れて「たたき筆」で振り落とすんじゃ。竹を使うのは静電気の影響を受けにくいからなんじゃよ。網目は1番から250番まであって、番号が小さいほど粗い砂子ができるんじゃぞい。気を箔ってな！✨'
+            'explanation': '正解じゃ！ぼかしはな、模様の外側から内側にかけて徐々に色を薄くしていく技法じゃよ。水を含ませた筆で染料の境界を優しくなぞると、自然なグラデーションができて立体感が出るんじゃ。力加減が難しくて、最初は失敗したこともあったのう。ぼかしの技術は「ボカ」っとしとったらダメじゃぞ！ハハハ！🎨'
         },
         {
-            'question': '金彩職人は京友禅の工程で「○○係」と呼ばれています。○○に入る言葉は？',
+            'question': '「糸目糊」の役割として正しいのはどれ？',
             'options': [
-                'A) 仕上げ',
-                'B) 化粧',
-                'C) 飾り'
+                'A) 染料を布に定着させる',
+                'B) 模様の輪郭に糊を置いて色が混ざらないようにする',
+                'C) 布を柔らかくする'
             ],
             'correct': 1,
-            'explanation': '正解じゃ！「化粧係」と呼ばれておるんじゃよ。友禅染めだけではボヤっとした印象になりがちな部分を、金彩でキリッと華やかに仕上げるんじゃ。まさに着物のお化粧じゃのう💄'
-        },
-        {
-            'question': '「もみ箔」という技法で蜘蛛の巣のような模様を作るときに使う素材は何？',
-            'options': [
-                'A) 絹糸',
-                'B) 真綿',
-                'C) 和紙'
-            ],
-            'correct': 1,
-            'explanation': '正解じゃ！「真綿」を使うんじゃよ。真綿を蜘蛛の巣状に薄く引き延ばしたフレームを生地に当てて、その上から金箔を貼るんじゃ。フレームを剥がすと、ランダムな繊細な模様が現れるんじゃぞい。その模様が「もみ紙」に似ていることから「もみ箔」と呼ばれておるんじゃな🕸️'
+            'explanation': '正解じゃ！糸目糊は模様の輪郭に糊で細い線を引いておくと、隣り合う色が混ざらないんじゃよ。まるで線画みたいに見えてな、その中にわしが色を塗っていく感じじゃ。「糊」だけに、この技術は「ノリ」に乗っておるのう！ハハハ！🖌️'
         }
     ],
     'en': [
         {
-            'question': 'What tool does a Kinsai craftsman use to sprinkle "Sunago" (gold dust)?',
+            'question': 'What is "Sashi-Yuzen" that Mori-san talked about?',
             'options': [
-                'A) A bamboo tube with a metal mesh (Sunago-zutsu)',
-                'B) A fine brush',
-                'C) A metal spoon'
+                'A) The process of placing glue on pattern outlines',
+                'B) The process of applying colors to patterns with brushes',
+                'C) The process of washing and finishing the fabric'
+            ],
+            'correct': 1,
+            'explanation': 'Correct! Sashi-Yuzen is the process of applying colors to kimono patterns by hand using brushes. It\'s the most artistic and vibrant part of Yuzen dyeing, and this process gives Kyo-Yuzen its beautiful colors. Good thing "sashi" means insert, not stab! Hahaha!✨'
+        },
+        {
+            'question': 'Which description correctly explains the "bokashi" technique?',
+            'options': [
+                'A) A technique that gradually lightens color from outside to inside',
+                'B) A technique that mixes multiple colors to create new ones',
+                'C) A technique that dries fabric by heating it'
             ],
             'correct': 0,
-            'explanation': 'Correct! It\'s called "Sunago-zutsu" - a bamboo tube with a metal mesh. Gold leaf is placed inside and tapped out using a stiff brush. Bamboo is used because it doesn\'t create static electricity. The mesh sizes range from #1 to #250, with lower numbers creating coarser particles✨'
+            'explanation': 'Correct! Bokashi gradually lightens the color from the outside to the inside of a pattern. Gently tracing the dye boundary with a water-soaked brush creates a natural gradation and gives depth. The pressure control is difficult, and I failed at first too. You can\'t be "blurry" about bokashi! Hahaha!🎨'
         },
         {
-            'question': 'In the Kyo-Yuzen process, Kinsai craftsmen are called the "○○ team." What word fills the blank?',
+            'question': 'What is the role of "itome-nori" (resist paste)?',
             'options': [
-                'A) Finishing',
-                'B) Makeup',
-                'C) Decoration'
+                'A) To fix the dye to the fabric',
+                'B) To draw lines on pattern outlines to prevent colors from mixing',
+                'C) To soften the fabric'
             ],
             'correct': 1,
-            'explanation': 'Correct! They\'re called the "Makeup team" (Keshō-gakari)! Yuzen dyeing alone can look a bit soft, so Kinsai adds that crisp, gorgeous finish - just like makeup for kimono!💄'
-        },
-        {
-            'question': 'What material is used in the "Momi-haku" technique to create spider web-like patterns?',
-            'options': [
-                'A) Silk thread',
-                'B) Cotton wadding (Mawata)',
-                'C) Japanese paper'
-            ],
-            'correct': 1,
-            'explanation': 'Correct! It\'s cotton wadding (Mawata)! The wadding is stretched thin like a spider web, placed on the fabric, and gold leaf is applied on top. When the frame is removed, a delicate random pattern appears. It\'s called "Momi-haku" because the pattern resembles "Momi-gami" (crinkled paper)🕸️'
+            'explanation': 'Correct! Itome-nori involves drawing thin lines with paste on pattern outlines to prevent adjacent colors from mixing. It looks like a line drawing, and I color inside it. The paste really "sticks" to its job! Hahaha!🖌️'
         }
     ]
 }
@@ -750,16 +750,16 @@ def calculate_relationship_level(conversation_count):
         return {'level': 4, 'style': 'best_friend', 'name': 'MAX'}
 
 def get_relationship_adjusted_greeting(language, relationship_style):
-    """関係性レベルに応じた挨拶を生成（金箔職人MORI版）"""
+    """関係性レベルに応じた挨拶を生成（挿し友禅職人MORI版）"""
     greetings = {
         'ja': {
-            'formal': "こんにちは。わしは京友禅の金彩という、金箔を貼る仕事をしとるモリというものじゃ。モリだけに元気モリモリじゃ。なんでも質問してくれい！",
+            'formal': "こんにちは。わしは京友禅の挿し友禅という、着物に色を挿していく仕事をしとるモリというものじゃ。モリだけに元気モリモリじゃ！なんでも質問してくれい！",
             'polite': "また会えて嬉しいのう！今日はどんなお話をしようかのう？",
             'friendly': "おお！会いたかったぞい！今日も楽しくお話ししようのう。",
             'casual': "元気にしとったかい？何か聞きたいことあるかのう？"
         },
         'en': {
-            'formal': "Hello! I'm MORI. I'm a Kinsai craftsman who applies gold leaf to Kyo-Yuzen kimono. Feel free to ask me anything!",
+            'formal': "Hello! I'm MORI. I'm a Sashi-Yuzen craftsman who applies colors to Kyo-Yuzen kimono patterns. Feel free to ask me anything!",
             'polite': "Nice to see you again! What would you like to talk about today?",
             'friendly': "Hey there! I missed you! Let's chat!",
             'casual': "How have you been? Got any questions?"
@@ -1692,8 +1692,8 @@ def handle_connect():
         # 初回接続の場合
         if session_data[session_id]['first_interaction']:
             try:
-                # 🆕 金箔職人MORI用: 自己紹介メッセージ（簡潔版）
-                intro_message = "こんにちは。わしは京友禅の金彩という、金箔を貼る仕事をしとるモリというものじゃ。モリだけに元気モリモリじゃ。なんでも質問してくれい！"
+                # 🆕 挿し友禅職人MORI用: 自己紹介メッセージ（簡潔版）
+                intro_message = "こんにちは。わしは京友禅の挿し友禅という、着物に色を挿していく仕事をしとるモリというものじゃ。モリだけに元気モリモリじゃ！なんでも質問してくれい！"
                 intro_emotion = 'start'  # Startモーション使用
                 
                 # 感情を検証
